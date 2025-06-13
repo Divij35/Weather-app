@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import useWeatherStore from "../store/weatherStore";
 
 function CityForm({ appid }) {
   const [city, setCity] = useState("");
-  const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState(null);
+  const weatherData = useWeatherStore(state => state.data);
+  const setWeatherData = useWeatherStore(state => state.setData);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
